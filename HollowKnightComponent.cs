@@ -85,6 +85,20 @@ namespace LiveSplit.HollowKnight {
                 state.OnSplit += OnSplit;
                 state.OnUndoSplit += OnUndoSplit;
                 state.OnSkipSplit += OnSkipSplit;
+
+                if (state.CurrentTimingMethod == TimingMethod.RealTime) {
+                    var timingMessage = MessageBox.Show(
+                        "Hollow Knight uses Time without Loads (Game Time) as the main timing method.\n" +
+                        "LiveSplit is currently set to show Real Time (RTA).\n" +
+                        "Would you like to set the timing method to Game Time?",
+                        "LiveSplit | Hollow Knight",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question
+                    );
+
+                    if (timingMessage == DialogResult.Yes) {
+                        state.CurrentTimingMethod = TimingMethod.GameTime;
+                    }
+                }
             }
         }
 #else
@@ -690,6 +704,7 @@ namespace LiveSplit.HollowKnight {
                 case SplitName.KingsPass: shouldSplit = sceneName.StartsWith("Tutorial_01") && nextScene.StartsWith("Town"); break;
                 case SplitName.KingsPassEnterFromTown: shouldSplit = sceneName.StartsWith("Town") && nextScene.StartsWith("Tutorial_01"); break;
                 case SplitName.BlueLake: shouldSplit = !sceneName.StartsWith("Crossroads_50") && nextScene.StartsWith("Crossroads_50"); break;
+                case SplitName.CatacombsEntry: shouldSplit = !sceneName.StartsWith("RestingGrounds_10") && nextScene.StartsWith("RestingGrounds_10"); break;
 
                 case SplitName.VengeflyKingP: shouldSplit = sceneName.StartsWith("GG_Vengefly") && nextScene.StartsWith("GG_Gruz_Mother"); break;
                 case SplitName.GruzMotherP: shouldSplit = sceneName.StartsWith("GG_Gruz_Mother") && nextScene.StartsWith("GG_False_Knight"); break;
