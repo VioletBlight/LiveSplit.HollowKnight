@@ -303,6 +303,8 @@ namespace LiveSplit.HollowKnight {
         OnDefeatGPZ,
         [Description("Gruz Mother (Boss)"), ToolTip("Splits when killing Gruz Mother")]
         GruzMother,
+        [Description("Gruz Mother Killed (Transition)"), ToolTip("Splits on transition after killing Gruz Mother (and presumably children)")]
+        GruzMotherTrans,
         [Description("Hive Knight (Boss)"), ToolTip("Splits when killing Hive Knight")]
         HiveKnight,
         [Description("Enter Hive Knight (Transition)"), ToolTip("Splits when entering Hive Knight boss arena transition")]
