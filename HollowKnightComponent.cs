@@ -1301,6 +1301,7 @@ namespace LiveSplit.HollowKnight {
                         mem.PlayerData<int>(Offset.health) > 0 &&
                         nextScene != sceneName; 
                     break;
+                case SplitName.GruzMotherTrans: shouldSplit = mem.PlayerData<bool>(Offset.killedBigFly) && nextScene != sceneName; break;
 
                 case SplitName.AbyssDoor: shouldSplit = mem.PlayerData<bool>(Offset.abyssGateOpened); break;
                 case SplitName.AbyssLighthouse: shouldSplit = mem.PlayerData<bool>(Offset.abyssLighthouse); break;
